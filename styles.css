@@ -1,0 +1,125 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: hsl(240, 18%, 15%);
+  --calculator-color: hsl(182, 25%, 50%);
+  --display-color: hsl(37, 100%, 92%);
+
+  --inner-border: hsl(210, 13%, 44%);
+  --inner-border-hover: hsl(210, 13%, 34%);
+
+  --outer-border: hsl(29, 62%, 25%);
+  --outer-border-hover: hsl(29, 63%, 49%);
+
+  --button-hue: 200;
+  --button-sat: 40%;
+  --button-light: 70%;
+}
+
+body {
+  font-family: "Oxanium", sans-serif;
+
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+  height: 100vh;
+
+  background-color: var(--background-color);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 23rem;
+  margin: auto;
+  padding: 3rem 2rem 2rem;
+
+  background-color: var(--calculator-color);
+  border: 0.3rem solid var(--outer-border);
+  border-radius: 2rem;
+}
+.container:hover {
+  border-color: var(--outer-border-hover);
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+
+  min-height: 7rem;
+  padding: 1rem;
+
+  background-color: var(--display-color);
+  border: 0.2rem solid var(--inner-border);
+}
+.display:hover {
+  border-color: var(--inner-border-hover);
+}
+.primary {
+  overflow-wrap: break-word;
+  max-width: 100%;
+  font-size: 2rem;
+}
+.secondary {
+  overflow-wrap: break-word;
+  max-width: 100%;
+  color: var(--inner-border-hover);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 3rem);
+  gap: 1rem;
+}
+.double {
+  grid-column: span 2;
+}
+.buttons > button {
+  font-family: inherit;
+  font-size: 1.5rem;
+  border: 0.2rem solid var(--inner-border);
+
+  background-color: hsl(
+    var(--button-hue),
+    var(--button-sat),
+    var(--button-light)
+  );
+}
+button[data-value]:hover,
+button[data-value]:focus {
+  background-color: hsl(
+    var(--button-hue),
+    var(--button-sat),
+    calc(var(--button-light) + 5%)
+  );
+  border-color: var(--inner-border-hover);
+}
+button[data-value="/"],
+button[data-value="*"],
+button[data-value="-"],
+button[data-value="+"] {
+  --button-hue: 60;
+}
+button[data-value="="] {
+  --button-hue: 120;
+}
+button[data-value="."] {
+  --button-hue: 230;
+}
+button[data-value="clear"] {
+  --button-hue: 330;
+}
+button[data-value="delete"] {
+  --button-hue: 20;
+}
