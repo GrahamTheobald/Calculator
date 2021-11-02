@@ -56,7 +56,7 @@ body {
   align-items: flex-end;
   gap: 1rem;
 
-  min-height: 7rem;
+  min-height: 7.5rem;
   padding: 1rem;
 
   background-color: var(--display-color);
@@ -105,8 +105,8 @@ button[data-value]:focus {
   );
   border-color: var(--inner-border-hover);
 }
-button[data-value="/"],
-button[data-value="*"],
+button[data-value="÷"],
+button[data-value="x"],
 button[data-value="-"],
 button[data-value="+"] {
   --button-hue: 60;
@@ -114,7 +114,8 @@ button[data-value="+"] {
 button[data-value="="] {
   --button-hue: 120;
 }
-button[data-value="."] {
+button[data-value="."],
+button[data-neg] {
   --button-hue: 230;
 }
 button[data-value="clear"] {
